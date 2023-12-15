@@ -34,3 +34,22 @@ seeds
 |> Enum.map(fn seed -> Step.apply(String.to_integer(seed), steps) end)
 |> Enum.min
 |> IO.puts
+
+# Part two notes
+# Sort the location destinations, and brute force reversing the algorithm.
+
+# Use the last map in this way, so brute forcing all values (including missing)
+# humidity-to-location map:
+# 1         1
+# 2         2
+# 3         3
+# 2 4 10 -> 4..13
+# 14        14
+# 15        15
+# 5 16 10 -> 16..25
+
+# If last step (Enum.empty?(steps)) we just need to check all ranges and see if the current number is in
+# any range of seeds
+
+# Define another function to perform the last step. Doing something like:
+# Enum.member?(start..(start + length), key) but start and lenght will be taken diffrently from the seeds
